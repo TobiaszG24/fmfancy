@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+
+
+  python-publisher:
+      build:
+        context: ..
+        dockerfile: ".github/Dockerfile.release"
+      container_name: python-publisher
+      restart: unless-stopped
+      environment:
+        TWINE_USERNAME: "TobiaszG24"
+        TWINE_PASSWORD: "###"
+      deploy:
+        resources:
+          limits:
+            cpus: "1"
+            memory: 500M
+      logging:
+        options:
+          max-size: "512m"
